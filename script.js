@@ -23,33 +23,28 @@ document.addEventListener('DOMContentLoaded', () => {
         revealOnScroll.observe(reveal);
     });
 
-    // Parallax effect on the interactive orbital elements based on mouse movement
-    const orbitalContainer = document.querySelector('.interactive-orbital');
-    const nodes = document.querySelectorAll('.icon-node');
-    const center = document.querySelector('.orbital-center');
+    // Chatbot Typing Animation
+    const typingText = document.querySelector('.typing-text');
+    if (typingText) {
+        const textToType = "Me ajude a escrever essa reportagem";
+        let charIndex = 0;
 
-    if (orbitalContainer) {
-        orbitalContainer.addEventListener('mousemove', (e) => {
-            const rect = orbitalContainer.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                typingText.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 80); // Speed of typing
+            } else {
+                // Wait a bit, then restart animation to loop
+                setTimeout(() => {
+                    typingText.textContent = "";
+                    charIndex = 0;
+                    typeWriter();
+                }, 4000); // 4 seconds before resetting
+            }
+        }
 
-            // Move the center element slightly
-            center.style.transform = `translate(calc(-50% + ${x * 0.05}px), calc(-50% + ${y * 0.05}px))`;
-
-            // Move the nodes with different speeds to create a 3D feel
-            nodes.forEach((node, index) => {
-                const speed = 0.08 + (index * 0.02);
-                node.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-            });
-        });
-
-        orbitalContainer.addEventListener('mouseleave', () => {
-            // Reset transforms
-            center.style.transform = `translate(-50%, -50%)`;
-            nodes.forEach(node => {
-                node.style.transform = `translate(0px, 0px)`;
-            });
-        });
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
     }
 });
