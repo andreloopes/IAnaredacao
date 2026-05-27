@@ -107,6 +107,30 @@ h1, h2, h3 {
     overflow: hidden;
 }
 
+.glass-card-split {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.glass-card-split .card-text {
+    flex: 1;
+}
+
+.glass-card-split .card-image {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.glass-card-split .card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
 /* Hero Section */
 .hero {
     text-align: center;
@@ -357,6 +381,7 @@ h1, h2, h3 {
     .glass-card { padding: 2rem; }
     .glass-card h3 { font-size: 2rem; }
     .glass-card-chat { transform: scale(0.9); }
+    .glass-card-split { flex-direction: column; gap: 2rem; }
 }
 
 /* Print Styles for PDF Export */
