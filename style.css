@@ -134,6 +134,12 @@ h1, h2, h3 {
     display: block;
 }
 
+.glass-card-split .mockup-image img {
+    object-fit: contain;
+    max-height: 500px;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+}
+
 /* Hero Section */
 .hero {
     text-align: center;
